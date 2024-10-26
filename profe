@@ -1,0 +1,123 @@
+# Ejercicio 1: Lee 10 números separados por espacio y determina si son positivos, negativos o cero
+entrada <- readline(prompt = "Ingresa 10 números separados por espacio: ")
+nvierte la entrada a un vector numérico
+numeros <- as.numeric(unlist(strsplit(trimws(entrada), "\\s+")))
+
+if (length(numeros) == 10) {
+  clasificacion <- ifelse(numeros > 0, "Positivo", ifelse(numeros < 0, "Negativo", "Cero"))
+  cat("Clasificación de números:", paste(clasificacion, collapse = ", "), "\n")
+} else {
+  cat("Por favor, ingresa exactamente 10 números.\n")
+}
+
+
+# Ejercicio 2: Cálculo de números pares e impares con separación en columnas
+set.seed(123) # Para resultados reproducibles
+numeros <- sample(1:100, 100, replace = TRUE)
+pares <- numeros[numeros %% 2 == 0]
+impares <- numeros[numeros %% 2 != 0]
+
+cat("Números Pares:\n")
+cat(paste(pares, collapse = ", "), "\n")
+cat("Cantidad de números pares:", length(pares), "\n\n")
+
+cat("Números Impares:\n")
+cat(paste(impares, collapse = ", "), "\n")
+cat("Cantidad de números impares:", length(impares), "\n\n")
+
+
+# Pide un número N e imprime la suma de 1 a N
+N <- as.integer(readline(prompt = "Ingresa un número N: "))
+suma <- sum(1:N)
+cat("La suma de los primeros", N, "números es:", suma, "\n")
+
+
+# Ejercicio 4: Número de Fibonacci (primeros 20 números)
+fibonacci <- numeric(20)
+fibonacci[1] <- 0
+fibonacci[2] <- 1
+for (i in 3:20) {
+  fibonacci[i] <- fibonacci[i - 1] + fibonacci[i - 2]
+}
+cat("Primeros 20 números de la secuencia de Fibonacci:\n", paste(fibonacci, collapse = ", "), "\n\n")
+
+
+# Ejercicio 5: Cálculo de factorial
+n <- 5
+factorial_n <- 1
+for (i in 1:n) {
+  factorial_n <- factorial_n * i
+}
+cat("Factorial de", n, "es:", factorial_n, "\n\n")
+
+
+
+
+# Ejercicio 6: Juego de adivinanza
+numero_secreto <- sample(1:100, 1)
+adivina <- as.numeric(readline(prompt = "Adivina un número entre 1 y 100: "))
+intentos <- 1
+while (adivina != numero_secreto) {
+  if (adivina > numero_secreto) {
+    cat("El número es menor\n")
+  } else {
+    cat("El número es mayor\n")
+  }
+  adivina <- as.numeric(readline(prompt = "Intenta de nuevo: "))
+  intentos <- intentos + 1
+}
+cat("¡Correcto! Adivinaste en", intentos, "intentos.\n\n")
+
+
+
+# Ejercicio 7: Validación de contraseña
+password_correcta <- "1234"
+intentos <- 0
+repeat {
+  password <- readline(prompt = "Ingresa la contraseña: ")
+  intentos <- intentos + 1
+  if (password == password_correcta) {
+    cat("Contraseña correcta.\n\n")
+    break
+  } else if (intentos >= 3) {
+    cat("Acceso bloqueado.\n\n")
+    break
+  } else {
+    cat("Contraseña incorrecta, intenta de nuevo.\n")
+  }
+}
+
+
+
+# Ejercicio 8: Suma de dígitos de un número
+numero <- 1234
+suma_digitos <- sum(as.numeric(unlist(strsplit(as.character(numero), ""))))
+cat("Suma de los dígitos del número", numero, "es:", suma_digitos, "\n\n")
+
+
+# Ejercicio 9: Impresión de patrones
+cat("Patrón de triángulo:\n")
+for (i in 1:5) {
+  cat(rep("*", i), "\n")
+}
+cat("\n")
+
+
+
+
+# Ejercicio 10: Números primos entre 1 y 100
+cat("Números primos entre 1 y 100:\n")
+for (num in 2:100) {
+  es_primo <- TRUE
+  for (i in 2:(num - 1)) {
+    if (num %% i == 0) {
+      es_primo <- FALSE
+      break
+    }
+  }
+  if (es_primo) {
+    cat(num, " ")
+  }
+}
+cat("\n\n")
+
